@@ -1,0 +1,14 @@
+name: Simple go build
+
+on:
+  push:
+    branches: main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup go version
+        uses: actions/setup-go@v2
+      - run: go run src/main.go
