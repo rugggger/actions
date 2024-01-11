@@ -1,4 +1,4 @@
-name: Simple go build
+name: Simple go build (two)
 
 on:
   push:
