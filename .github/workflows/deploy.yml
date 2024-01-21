@@ -8,14 +8,15 @@ jobs:
   Deploy:
     name: Deploy to EC2
     runs-on: ubuntu-latest
-    
+    environment:
+      name: staging
     steps:
       - uses: actions/checkout@v2 
       - name: Build & Deploy
         env:
-            PRIVATE_KEY: ${{ secrets.SSH_EC2_CONNECT }}
+            PRIVATE_KEY: ${{ secrets.SSH_KEY }}
             HOSTNAME: ${{secrets.SSH_HOST}}
-            USER_NAME: ${{secrets.USER_NAME}}
+            USER_NAME: ${{secrets.SSH_USER}}
       
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
